@@ -38,7 +38,7 @@ services:
     command: chown -R 1001:1001 /var/uploads /var/log/CTFd
 
   nginx:
-    image: nginx:stable
+    image: nginx:stable-alpine3.23-slim
     restart: always
     volumes:
       - ./conf/nginx/http.conf:/etc/nginx/nginx.conf
@@ -64,7 +64,7 @@ services:
     command: [mysqld, --character-set-server=utf8mb4, --collation-server=utf8mb4_unicode_ci, --wait_timeout=28800, --log-warnings=0]
 
   cache:
-    image: redis:4
+    image: redis:alpine
     restart: always
     volumes:
     - .data/redis:/data
